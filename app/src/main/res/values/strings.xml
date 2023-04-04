@@ -12,4 +12,7 @@
     <string name="title">Buzzwords</string>
     <string name="trendingStr">Trending Buzzwords</string>
     <string name="MoreText">See More</string>
+    <string name="searchStr">...or search for a trending word</string>
+    <string name="searchTxt">Search for a buzzword in the news</string>
+    <string name="wotdTxt">Word of the Day</string>
 </resources>

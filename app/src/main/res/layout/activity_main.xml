@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -33,6 +33,7 @@
             android:id="@+id/TrendingTitle"
             android:layout_width="match_parent"
             android:layout_height="84dp"
+            android:clickable="false"
             android:fontFamily="sans-serif"
             android:text="@string/trendingStr"
             android:textAlignment="center"
@@ -119,6 +120,82 @@
                 android:backgroundTint="@color/buzzblue"
                 android:rotationY="-15"
                 android:text="@string/MoreText" />
+
+        </LinearLayout>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/searchTitle"
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:layout_weight="1"
+            android:clickable="false"
+            android:fontFamily="sans-serif"
+            android:text="@string/searchStr"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:chipBackgroundColor="#BE5271FF" />
+
+        <EditText
+            android:id="@+id/searchTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/searchTxt"
+            android:inputType="textPersonName" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/wotdTitle"
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:layout_weight="1"
+            android:clickable="false"
+            android:fontFamily="sans-serif"
+            android:text="@string/wotdTxt"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:chipBackgroundColor="#BE5271FF" />
+
+        <LinearLayout
+            android:id="@+id/wotd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="123dp"
+                android:layout_height="145dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/wotdTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Deportation (noun)"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/wotdDef"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Act of sending people away" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/wotdSeeMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/buzzblue"
+                android:rotationY="-15"
+                android:text="@string/MoreText" />
+
         </LinearLayout>
 
     </LinearLayout>
