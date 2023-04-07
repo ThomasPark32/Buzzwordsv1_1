@@ -7,6 +7,27 @@
     android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/buzzblue"
+            android:clickable="true"
+            android:layerType="none"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:navigationIcon="@drawable/ic_launcher_foreground"
+            app:title="@string/title"
+            app:titleTextColor="#FFFFFF" />
+    </androidx.cardview.widget.CardView>
+
     <ScrollView
         android:id="@+id/Scrollable"
         android:layout_width="match_parent"
@@ -21,33 +42,29 @@
             android:orientation="vertical">
 
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/TopBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/buzzblue"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
-                app:title="@string/title"
-                app:titleTextColor="#FFFFFF" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/TrendingTitle"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:clickable="false"
-                android:fontFamily="sans-serif"
-                android:text="@string/trendingStr"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="36sp"
-                android:textStyle="bold"
-                app:chipBackgroundColor="#BE5271FF" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/TrendingWord1Box"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/TrendingTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="60dp"
+                    android:clickable="false"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/trendingStr"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:chipBackgroundColor="#BE5271FF"
+                    app:layout_constraintBottom_toTopOf="@+id/TrendingLayout1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <LinearLayout
                     android:id="@+id/TrendingLayout1"
@@ -59,7 +76,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/SeeMoreTrending1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toBottomOf="@+id/TrendingTitle">
 
                     <TextView
                         android:id="@+id/TrendingWord1Txt"
@@ -67,6 +84,7 @@
                         android:layout_height="wrap_content"
                         android:text="Poggers (interjection)"
                         android:textAlignment="viewStart"
+                        android:textIsSelectable="true"
                         android:textSize="32sp"
                         android:textStyle="bold" />
 
@@ -86,7 +104,6 @@
                     android:backgroundTint="@color/buzzblue"
                     android:text="@string/MoreText"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.75"
                     app:layout_constraintStart_toStartOf="parent"
@@ -144,15 +161,14 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/searchBox"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/searchTitle"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="80dp"
                     android:layout_weight="1"
                     android:clickable="false"
@@ -162,7 +178,11 @@
                     android:textColor="#FFFFFF"
                     android:textSize="25sp"
                     android:textStyle="bold"
-                    app:chipBackgroundColor="#BE5271FF" />
+                    app:chipBackgroundColor="#BE5271FF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
                     android:id="@+id/searchTextBox"
@@ -170,26 +190,33 @@
                     android:layout_height="60dp"
                     android:ems="10"
                     android:hint="@string/searchTxt"
-                    android:inputType="textPersonName" />
-            </LinearLayout>
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/wotdTitle"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:clickable="false"
-                android:fontFamily="sans-serif"
-                android:text="@string/wotdTxt"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                app:chipBackgroundColor="#BE5271FF" />
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/searchTitle" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/wotdBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/wotdTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:clickable="false"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/wotdTxt"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    app:chipBackgroundColor="#BE5271FF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <LinearLayout
                     android:id="@+id/wotdLayout"
@@ -200,7 +227,7 @@
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toBottomOf="@+id/wotdTitle">
 
                     <TextView
                         android:id="@+id/wotdTxt"
@@ -228,11 +255,79 @@
                     android:backgroundTint="@color/buzzblue"
                     android:text="@string/MoreText"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.75"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/wotdLayout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/bottomBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/buzzblue">
+
+                <ImageView
+                    android:id="@+id/buzzy2"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_marginBottom="108dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/bottomTextLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/bottomTextLayout"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/bahai_star" />
+
+                <LinearLayout
+                    android:id="@+id/bottomTextLayout"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/buzzy2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <Button
+                        android:id="@+id/settingsButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#BE5271FF"
+                        android:text="@string/settingsStr"
+                        android:textAlignment="viewStart"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/aboutButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#BE5271FF"
+                        android:text="@string/aboutStr"
+                        android:textAlignment="viewStart"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/ContactButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#BE5271FF"
+                        android:text="@string/contactStr"
+                        android:textAlignment="viewStart"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/copyright"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/copyrightTxt"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp" />
+
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

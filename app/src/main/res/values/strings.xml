@@ -15,4 +15,8 @@
     <string name="searchStr">...or search for a trending word</string>
     <string name="searchTxt">Search for a buzzword in the news</string>
     <string name="wotdTxt">Word of the Day</string>
+    <string name="settingsStr">Settings</string>
+    <string name="aboutStr">About</string>
+    <string name="contactStr">Contact Us</string>
+    <string name="copyrightTxt">Buzzwords Inc. 2023</string>
 </resources>
