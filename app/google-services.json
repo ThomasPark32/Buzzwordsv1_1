@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "219418550831",
+    "project_id": "buzzwordsapp-38fcc",
+    "storage_bucket": "buzzwordsapp-38fcc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:219418550831:android:e15feab0f4ae54386d5cda",
+        "android_client_info": {
+          "package_name": "com.example.buzzwordsv1_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "219418550831-cmbsegneggql3p1uk4ru797chcsrohc0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAapoGUbfUbYEYIG3jCS81KbUJjQ1R7S_c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "219418550831-cmbsegneggql3p1uk4ru797chcsrohc0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

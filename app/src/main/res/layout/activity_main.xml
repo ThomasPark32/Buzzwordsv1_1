@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/TopCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +30,7 @@
     </androidx.cardview.widget.CardView>
 
     <ScrollView
-        android:id="@+id/Scrollable"
+        android:id="@+id/ScrollableView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -102,6 +103,7 @@
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:backgroundTint="@color/buzzblue"
+                    android:onClick="goToDefinition"
                     android:text="@string/MoreText"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
