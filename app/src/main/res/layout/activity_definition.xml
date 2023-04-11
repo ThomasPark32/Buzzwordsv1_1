@@ -16,6 +16,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/buzzblue"
+            android:clickable="true"
+            android:layerType="none"
+            android:minHeight="?attr/actionBarSize"
+            android:onClick="returnToMain"
+            android:theme="?attr/actionBarTheme"
+            app:navigationIcon="@drawable/ic_launcher_foreground"
+            app:title="@string/title"
+            app:titleTextColor="#FFFFFF" />
     </androidx.cardview.widget.CardView>
 
     <ScrollView
@@ -84,20 +97,39 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/BuzzwordDef" />
 
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/topBar"
-                    android:layout_width="match_parent"
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/TimelineBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/TimelineTitle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/buzzblue"
-                    android:clickable="true"
-                    android:layerType="none"
-                    android:minHeight="?attr/actionBarSize"
-                    android:theme="?attr/actionBarTheme"
-                    app:navigationIcon="@drawable/ic_launcher_foreground"
-                    app:title="@string/title"
-                    app:titleTextColor="#FFFFFF"
-                    tools:layout_editor_absoluteX="-2dp"
-                    tools:layout_editor_absoluteY="-1dp" />
+                    android:layout_marginTop="50dp"
+                    android:text="Timeline of Usage"
+                    android:textColor="#000000"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/worldMapButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="false"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TimelineTitle"
+                    app:srcCompat="@drawable/timeline" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -145,39 +177,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/WorldMapButton"
                     app:srcCompat="@drawable/gradient" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/TimelineBox"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/TimelineTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:text="Timeline of Usage"
-                    android:textColor="#000000"
-                    android:textSize="36sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
-                    android:id="@+id/worldMapButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:adjustViewBounds="true"
-                    android:cropToPadding="false"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/TimelineTitle"
-                    app:srcCompat="@drawable/timeline" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
