@@ -85,6 +85,7 @@
                         android:layout_height="wrap_content"
                         android:text="Poggers (interjection)"
                         android:textAlignment="viewStart"
+                        android:textColor="#000000"
                         android:textIsSelectable="true"
                         android:textSize="32sp"
                         android:textStyle="bold" />
@@ -95,6 +96,7 @@
                         android:layout_height="wrap_content"
                         android:text="Used to express excitement or joy "
                         android:textAlignment="textStart"
+                        android:textColor="#000000"
                         android:textSize="20sp" />
                 </LinearLayout>
 
@@ -135,6 +137,7 @@
                         android:layout_height="wrap_content"
                         android:text="Debt ceiling (noun)"
                         android:textAlignment="viewStart"
+                        android:textColor="#000000"
                         android:textIsSelectable="true"
                         android:textSize="32sp"
                         android:textStyle="bold" />
@@ -145,6 +148,7 @@
                         android:layout_height="wrap_content"
                         android:text="Used to express excitement or joy "
                         android:textAlignment="textStart"
+                        android:textColor="#000000"
                         android:textSize="20sp" />
                 </LinearLayout>
 
@@ -153,6 +157,7 @@
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:backgroundTint="@color/buzzblue"
+                    android:onClick="goToDefinition"
                     android:text="@string/MoreText"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -196,6 +201,19 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/searchTitle" />
+
+                <Button
+                    android:id="@+id/searchButton"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/buzzblue"
+                    android:onClick="goToSearch"
+                    android:text="@string/searchBoxStr"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.75"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/searchTextBox" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -237,6 +255,7 @@
                         android:layout_height="wrap_content"
                         android:text="Deportation (noun)"
                         android:textAlignment="viewStart"
+                        android:textColor="#000000"
                         android:textIsSelectable="true"
                         android:textSize="32sp"
                         android:textStyle="bold" />
@@ -247,6 +266,7 @@
                         android:layout_height="wrap_content"
                         android:text="Act of sending people away from a country"
                         android:textAlignment="textStart"
+                        android:textColor="#000000"
                         android:textSize="20sp" />
                 </LinearLayout>
 
@@ -255,6 +275,7 @@
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:backgroundTint="@color/buzzblue"
+                    android:onClick="goToDefinition"
                     android:text="@string/MoreText"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
