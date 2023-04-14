@@ -25,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(tent);
     }
 
+    public void goToSettings(View v) {
+        Intent tent = new Intent(this, SettingsActivity.class);
+        startActivity(tent);
+    }
+
     public void goToSearch(View v) {
         EditText searchTextBox = findViewById(R.id.searchTextBox);
         String query = searchTextBox.getText().toString();

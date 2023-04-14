@@ -296,6 +296,7 @@
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:layout_marginBottom="108dp"
+                    android:rotation="180"
                     app:layout_constraintBottom_toBottomOf="@+id/bottomTextLayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/bottomTextLayout"
@@ -316,6 +317,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:backgroundTint="#BE5271FF"
+                        android:onClick="goToSettings"
                         android:text="@string/settingsStr"
                         android:textAlignment="viewStart"
                         android:textSize="16sp" />
