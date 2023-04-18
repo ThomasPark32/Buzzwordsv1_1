@@ -15,6 +15,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/buzzblue"
+            android:clickable="true"
+            android:layerType="none"
+            android:minHeight="?attr/actionBarSize"
+            android:onClick="returnToMain"
+            android:theme="?attr/actionBarTheme"
+            app:navigationIcon="@drawable/ic_launcher_foreground"
+            app:title="@string/title"
+            app:titleTextColor="#FFFFFF" />
     </androidx.cardview.widget.CardView>
 
     <ScrollView
@@ -37,7 +50,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/SettingsTitle"
+                    android:id="@+id/ContactUsTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="60dp"
@@ -58,11 +71,11 @@
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Setting1Txt"
-                    app:layout_constraintTop_toBottomOf="@+id/SettingsTitle" />
+                    app:layout_constraintStart_toEndOf="@+id/ContactTxt1"
+                    app:layout_constraintTop_toBottomOf="@+id/ContactUsTitle" />
 
                 <TextView
-                    android:id="@+id/Setting1Txt"
+                    android:id="@+id/ContactTxt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
@@ -70,23 +83,8 @@
                     android:textSize="30sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/SettingsTitle" />
+                    app:layout_constraintTop_toBottomOf="@+id/ContactUsTitle" />
 
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/topBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/buzzblue"
-                    android:clickable="true"
-                    android:layerType="none"
-                    android:minHeight="?attr/actionBarSize"
-                    android:onClick="returnToMain"
-                    android:theme="?attr/actionBarTheme"
-                    app:navigationIcon="@drawable/ic_launcher_foreground"
-                    app:title="@string/title"
-                    app:titleTextColor="#FFFFFF"
-                    tools:layout_editor_absoluteX="0dp"
-                    tools:layout_editor_absoluteY="-1dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
