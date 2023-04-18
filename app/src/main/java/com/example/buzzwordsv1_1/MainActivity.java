@@ -1,7 +1,13 @@
 package com.example.buzzwordsv1_1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToSettings(View v) {
         Intent tent = new Intent(this, SettingsActivity.class);
+        startActivity(tent);
+    }
+
+    public void goToAbout(View v) {
+        Intent tent = new Intent(this, AboutActivity.class);
         startActivity(tent);
     }
 

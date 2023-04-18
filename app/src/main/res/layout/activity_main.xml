@@ -327,6 +327,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#BE5271FF"
+                        android:onClick="goToAbout"
                         android:text="@string/aboutStr"
                         android:textAlignment="viewStart"
                         android:textSize="16sp" />
