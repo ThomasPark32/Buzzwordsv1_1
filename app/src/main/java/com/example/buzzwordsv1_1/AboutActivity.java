@@ -14,7 +14,10 @@ public class AboutActivity extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_about);
     }
-
+    /**
+     * Quits the current activity and goes back to the previous screen.
+     * @param v the view
+     */
     public void returnToMain(View v){
         finish();
     }

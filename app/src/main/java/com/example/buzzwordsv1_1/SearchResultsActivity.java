@@ -30,11 +30,17 @@ public class SearchResultsActivity extends AppCompatActivity {
         TextView SearchResult2Title = findViewById(R.id.SearchResult2Title);
         SearchResult2Title.setText("Another similar word to " + query);
     }
-
+    /**
+     * Quits the current activity and goes back to the previous screen (the main activity).
+     * @param v the view
+     */
     public void returnToMain(View v){
         finish();
     }
-
+    /**
+     * Creates a new intent and starts the definition activity.
+     * @param v the view
+     */
     public void goToDefinition(View v) {
         Intent tents = new Intent(this, DefinitionActivity.class);
         startActivity(tents);

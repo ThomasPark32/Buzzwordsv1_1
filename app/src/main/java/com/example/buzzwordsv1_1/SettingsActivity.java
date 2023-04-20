@@ -14,7 +14,10 @@ public class SettingsActivity extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_settings);
     }
-
+    /**
+     * Quits the current activity and goes back to the previous screen (the main activity).
+     * @param v the view
+     */
     public void returnToMain(View v){
         finish();
     }
