@@ -1,25 +1,26 @@
 package com.example.buzzwordsv1_1;
 
+import java.util.ArrayList;
+
 public class Buzzword {
     private String buzzword;
-    private String definition;
+    private ArrayList<String> definitions;
 
     /**
      * Default constructor- Creates a new Buzzword object.
      */
     public Buzzword() {
         buzzword = "";
-        definition = "";
+        definitions = new ArrayList<String>();
     }
 
     /**
      * Parameter constructor- Creates a new Buzzword object with a given word and a given definition.
      * @param word the Buzzword
-     * @param def the definition to the Buzzword
      */
-    public Buzzword(String word, String def) {
+    public Buzzword(String word) {
         buzzword = word;
-        definition = def;
+        definitions = new ArrayList<String>();
     }
 
     /**
@@ -31,11 +32,11 @@ public class Buzzword {
     }
 
     /**
-     * Sets the definition of the buzzword to a given definition.
-     * @param def the definition of the Buzzword
+     * Sets one of the definitions of the buzzword to a given definition.
+     * @param def a definition of the Buzzword
      */
-    public void setDefinition(String def) {
-        definition = def;
+    public void addDefinition(String def) {
+        definitions.add(def);
     }
 
     /**
@@ -47,10 +48,22 @@ public class Buzzword {
     }
 
     /**
-     * Gets the definition from the Buzzword object.
-     * @return the definition of the Buzzword
+     * Gets the definitions from the Buzzword object.
+     * @return the definitions of the Buzzword
      */
-    public String getDefinition(){
-        return definition;
+    public ArrayList<String> getDefinitions(){
+        return definitions;
+    }
+    @Override
+    public String toString(){
+        String stringy = buzzword + ": ";
+        if (definitions.isEmpty()) {
+            stringy += "No definition, please contact us!";
+        } else {
+            for (String str : definitions) {
+                stringy += str + ", ";
+            }
+        }
+        return stringy;
     }
 }
