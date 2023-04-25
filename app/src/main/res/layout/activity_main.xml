@@ -52,6 +52,7 @@
                     android:id="@+id/TrendingTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="80dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="60dp"
                     android:clickable="false"
                     android:fontFamily="sans-serif"
@@ -83,7 +84,7 @@
                         android:id="@+id/TrendingWord1Txt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Poggers (interjection)"
+                        android:text="@string/trending1Template"
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textIsSelectable="true"
@@ -94,7 +95,7 @@
                         android:id="@+id/TrendingWord1Def"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Used to express excitement or joy "
+                        android:text="@string/trending1TempDef"
                         android:textAlignment="textStart"
                         android:textColor="#000000"
                         android:textSize="20sp" />
@@ -135,7 +136,7 @@
                         android:id="@+id/TrendingWord2Txt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Debt ceiling (noun)"
+                        android:text="@string/trending2Template"
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textIsSelectable="true"
@@ -146,7 +147,7 @@
                         android:id="@+id/TrendingWord2Def"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Used to express excitement or joy "
+                        android:text="@string/trending2TempDef"
                         android:textAlignment="textStart"
                         android:textColor="#000000"
                         android:textSize="20sp" />
@@ -169,6 +170,60 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/TrendingWord3Box"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/TrendingLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toTopOf="@+id/seeMoreTrending"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/TrendingWord3Txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/trending3Template"
+                        android:textAlignment="viewStart"
+                        android:textColor="#000000"
+                        android:textIsSelectable="true"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/TrendingWord3Def"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/trending3TempDef"
+                        android:textAlignment="textStart"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/seeMoreTrending"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/buzzblue"
+                    android:onClick="goToDefinition"
+                    android:text="@string/MoreText"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.75"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TrendingLayout3" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/searchBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -177,6 +232,7 @@
                     android:id="@+id/searchTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="80dp"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:clickable="false"
                     android:fontFamily="sans-serif"
@@ -225,6 +281,7 @@
                     android:id="@+id/wotdTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="80dp"
+                    android:layout_marginStart="8dp"
                     android:clickable="false"
                     android:fontFamily="sans-serif"
                     android:text="@string/wotdTxt"
@@ -253,7 +310,7 @@
                         android:id="@+id/wotdTxt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Deportation (noun)"
+                        android:text="@string/wotdTemplate"
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textIsSelectable="true"
@@ -264,7 +321,7 @@
                         android:id="@+id/wotdDef"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Act of sending people away from a country"
+                        android:text="@string/wotdTempDef"
                         android:textAlignment="textStart"
                         android:textColor="#000000"
                         android:textSize="20sp" />

@@ -1,14 +1,8 @@
 <resources>
-    <string name="app_name">BuzzWordsv1</string>
+    <string name="app_name">Buzzwords</string>
     <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title">Buzzwords</string>
     <string name="trendingStr">Trending Buzzwords</string>
     <string name="MoreText">See More</string>
@@ -23,4 +17,12 @@
     <string name="searchBoxStr">Search Word</string>
     <string name="okayStr">Okay</string>
     <string name="contactTxtStr">Feel free to contact us at buzzwordsapp@gmail.com</string>
+    <string name="trending1Template">Trending Word 1</string>
+    <string name="trending2Template">Trending Word 2</string>
+    <string name="trending3Template">Trending Word 3</string>
+    <string name="wotdTemplate">Buzzword</string>
+    <string name="trending1TempDef">Definition 1</string>
+    <string name="trending2TempDef">Definition 2</string>
+    <string name="trending3TempDef">Definition 3</string>
+    <string name="wotdTempDef">A word commonly found in contemporary sources.</string>
 </resources>
