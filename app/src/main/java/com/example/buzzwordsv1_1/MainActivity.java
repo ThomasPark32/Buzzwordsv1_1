@@ -2,13 +2,17 @@ package com.example.buzzwordsv1_1;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +26,12 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     // Determines if the Buzzword list has been updated (i.e. if it is a new day)
     boolean newDay = true;
+    // Currently trending buzzwords that are accessible from the main menu
+    Buzzword trending1;
+    Buzzword trending2;
+    Buzzword trending3;
+    // Word of the day
+    Buzzword wotd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,15 +49,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Creates a new intent and starts the definition activity.
+     * Creates a new intent, finds which button was pressed, gets the word associated with the button, and starts the definition activity.
      * @param v the view
      */
     public void goToDefinition(View v) {
-        // Global controller class object
-        final Controller aController = (Controller) getApplicationContext();
-        int length = aController.getBuzzwords().size();
-        Log.d("What", "Size of Buzzwords list: " + length);
+        String name = "";
+        TextView box = null;
+        int id = v.getId();
+        // Check which button is being pressed, then pass in buzzword.
+        if (id == R.id.SeeMoreTrending1) {
+            box = findViewById(R.id.TrendingWord1Txt);
+        } else if (id == R.id.SeeMoreTrending2) {
+            box = findViewById(R.id.TrendingWord2Txt);
+        } else if (id == R.id.SeeMoreTrending3) {
+            box = findViewById(R.id.TrendingWord3Txt);
+        } else if (id == R.id.SeeMoreWotd) {
+            box = findViewById(R.id.wotdTxt);
+        } else {
+            // Display error message; can not find button that was pressed.
+            Context context = getApplicationContext();
+            String text = "Error: Can not determine button pressed.";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        name = box.getText().toString();
+        // Start definition activity, pass in Buzzword
         Intent tent = new Intent(this, DefinitionActivity.class);
+        tent.putExtra("Buzzword",name);
         startActivity(tent);
     }
     /**
@@ -117,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
                     // Add definitions to buzzword
                     if (definitions != null) {
                         for (int k = 0; k < definitions.size(); k++) {
-                            Log.d("KeepItUpBaby", "Definition: " + definitions.get(k));
                             word.addDefinition(definitions.get(k));
                         }
                     }
@@ -147,9 +175,9 @@ public class MainActivity extends AppCompatActivity {
         // Global controller class object
         final Controller aController = (Controller) getApplicationContext();
         // Get first 3 trending buzzword objects from global Controller object
-        Buzzword trending1 = aController.getBuzzword(0);
-        Buzzword trending2 = aController.getBuzzword(1);
-        Buzzword trending3 = aController.getBuzzword(2);
+        trending1 = aController.getBuzzword(0);
+        trending2 = aController.getBuzzword(1);
+        trending3 = aController.getBuzzword(2);
         // Set titles on main activity with first 3 trending words
         TextView title1 = findViewById(R.id.TrendingWord1Txt);
         title1.setText(capitalized(trending1.getBuzzword()));
@@ -196,6 +224,11 @@ public class MainActivity extends AppCompatActivity {
         }
         return stringy;
     }
+
+    /**
+     * Randomly chooses a word of the day from a given amount of Buzzwords. Ignores the top three trending Buzzwords to avoid redundancy.
+     * @param amount the amount of Buzzwords present in the global Controller object's ArrayList of Buzzwords
+     */
     public void chooseWOTD(int amount) {
         // Need to choose between these words in the ArrayList
         int checkThrough = amount - 3;
@@ -203,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
         int choice = randall.nextInt(checkThrough) + 3;
         // Global controller class object
         final Controller aController = (Controller) getApplicationContext();
-        Buzzword wotd = aController.getBuzzword(choice);
+        wotd = aController.getBuzzword(choice);
         aController.setWOTD(wotd);
     }
 }

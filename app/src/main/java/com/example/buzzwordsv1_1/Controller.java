@@ -67,4 +67,15 @@ public class Controller extends Application {
     public Buzzword getWOTD(){
         return wotd;
     }
+    public int findBuzzword(String name){
+        int location = 0;
+        for (int index = 0; index < buzzwords.size(); index++) {
+            Buzzword b = buzzwords.get(index);
+            if (b.getBuzzword().equals(name.toLowerCase())){
+                location = index;
+                break;
+            }
+        }
+        return location;
+    }
 }
