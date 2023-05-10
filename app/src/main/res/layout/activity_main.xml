@@ -21,10 +21,12 @@
             android:layout_height="wrap_content"
             android:background="@color/buzzblue"
             android:clickable="true"
+            android:isScrollContainer="false"
             android:layerType="none"
             android:minHeight="?attr/actionBarSize"
+            android:pointerIcon="none"
             android:theme="?attr/actionBarTheme"
-            app:navigationIcon="@drawable/ic_launcher_foreground"
+            app:navigationIcon="@drawable/buzzyiconsmallest"
             app:title="@string/title"
             app:titleTextColor="#FFFFFF" />
     </androidx.cardview.widget.CardView>
@@ -353,12 +355,12 @@
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:layout_marginBottom="108dp"
-                    android:rotation="180"
+                    android:rotation="0"
                     app:layout_constraintBottom_toBottomOf="@+id/bottomTextLayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/bottomTextLayout"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/bahai_star" />
+                    app:srcCompat="@drawable/buzzy" />
 
                 <LinearLayout
                     android:id="@+id/bottomTextLayout"

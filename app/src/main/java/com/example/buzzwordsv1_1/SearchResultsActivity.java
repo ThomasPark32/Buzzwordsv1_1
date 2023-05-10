@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class SearchResultsActivity extends AppCompatActivity {
-
+    ArrayList<String> closestWords;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,17 +33,29 @@ public class SearchResultsActivity extends AppCompatActivity {
         TextView SearchResult2Title = findViewById(R.id.SearchResult2Title);
         SearchResult2Title.setText("Another similar word to " + query);
 
+        closestWords = new ArrayList<String>();
+    }
+
+    /**
+     * On start of this activity, this method will run once.
+     */
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Get the Intent that started this activity and extract the string to display
+        Intent tent = getIntent();
+        String query = tent.getStringExtra("query");
+
         // Global controller class object
         final Controller aController = (Controller) getApplicationContext();
 
         // Run search method to find similar words to given String
 
-        ArrayList<String> closestWords = levenshteinSearch(query.toLowerCase(), aController.getBuzzwords());
+        closestWords = levenshteinSearch(query.toLowerCase(), aController.getBuzzwords());
 
         Log.d("YAHOO", "Closest buzzwords to " + query + ": " + closestWords);
-
-
     }
+
     /**
      * Quits the current activity and goes back to the previous screen (the main activity).
      * @param v the view
@@ -61,7 +73,7 @@ public class SearchResultsActivity extends AppCompatActivity {
     }
 
     /**
-     * Compares searched word with every single Buzzword string, placing it in a String ArrayList using the Levenshtein Distance formula.
+     * Compares searched word with every single Buzzword string, placing it in a String ArrayList sorted by using the Levenshtein Distance formula.
      * @param searched the searched word
      * @param list the ArrayList of Buzzwords
      * @return an ArrayList containing the syntactically closest words at the front
@@ -76,6 +88,10 @@ public class SearchResultsActivity extends AppCompatActivity {
         ArrayList<Integer> intList = new ArrayList<Integer>();
         // List to store strings associated with those distances
         ArrayList<String> stringList = new ArrayList<String>();
+
+        Log.d("YAHOO", "stringList before addition:  " + stringList);
+        Log.d("YAHOO", "intList before addition:  " + intList);
+        Log.d("YAHOO", "regular list size before addition:  " + list.size());
 
         // Main loop, checks searched word to next word in the given list and sorts the ArrayLists by the distance given.
         for (int index = 0; index < list.size(); index++) {
@@ -100,7 +116,7 @@ public class SearchResultsActivity extends AppCompatActivity {
                 for (int l = 1; l < size2; l++) {
                     // Check if characters are the same
                     if (searched.charAt(j-1) == word.charAt(l - 1)) {
-                        matrix[j][l] = Math.min(matrix[j-1][l-1], Math.min(matrix[j-1][j] + 1, matrix[j][l-1] + 1));
+                        matrix[j][l] = Math.min(matrix[j-1][l-1], Math.min(matrix[j-1][l] + 1, matrix[j][l-1] + 1));
                     } else { // else if the characters are not the same
                         matrix[j][l] = Math.min(matrix[j-1][l]+1, Math.min(matrix[j-1][l-1] + 1, matrix[j][l-1] + 1));
                     }
@@ -111,25 +127,28 @@ public class SearchResultsActivity extends AppCompatActivity {
             int distance = matrix[size1 - 1][size2 - 1];
 
             // Sort list using intList and new distance to be added
-            int j = intList.size() -1;
+            int h = intList.size() -1;
             boolean done = false;
 
+            Log.d("YAHOO", "intList being added to:  " + intList);
+            Log.d("YAHOO", "stringList being added to:  " + stringList);
+
             // Checks if list is empty, needs to add initial value
-            if (j != -1) {
+            if (h != -1) {
                 while (!done) {
                     // If the distance is less than the value at the index, subtract the index pointer j
-                    if (distance < intList.get(j)) {
-                        j--;
+                    if (distance < intList.get(h)) {
+                        h--;
                         // If the index pointer j is -1, you've hit the lower bound of the ArrayList and must stop
-                        if (j == -1) {
+                        if (h == -1) {
                             intList.add(0, distance);
                             stringList.add(0, word);
                             done = true;
                         }
-                    } else if (distance >= intList.get(j)) {
+                    } else if (distance >= intList.get(h)) {
                         // If the distance is greater or equal to the value found, add it in the index after this value.
-                        intList.add(j + 1, distance);
-                        stringList.add(j + 1, word);
+                        intList.add(h + 1, distance);
+                        stringList.add(h + 1, word);
                         done = true;
                     }
                 }
@@ -138,6 +157,8 @@ public class SearchResultsActivity extends AppCompatActivity {
                 stringList.add(word);
             }
         }
+        Log.d("YAHOO", "Final int list :" + intList);
+        Log.d("YAHOO", "Final String list :" + stringList);
         return stringList;
     }
 

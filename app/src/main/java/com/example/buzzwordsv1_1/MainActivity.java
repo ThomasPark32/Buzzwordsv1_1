@@ -37,15 +37,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-    }
 
-    /**
-     * On start of this activity, this method will run once.
-     */
-    @Override
-    protected void onStart() {
-        super.onStart();
         readBuzzwordDataFB();
+        Log.d("YAHOO", "I'M FINNA READ THE FIREBASE!!!!!");
     }
 
     /**
@@ -127,13 +121,14 @@ public class MainActivity extends AppCompatActivity {
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Trending");
+
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
             // Global controller class object
             final Controller aController = (Controller) getApplicationContext();
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and againnwhenever data at this location is updated.
+                // This method is called once with the initial value and again whenever data at this location is updated.
                 // Loop over all children in the trending tab
                 for (int index = 0; index < dataSnapshot.getChildrenCount(); index++) {
                     // Get buzzword Firebase word
