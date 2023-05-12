@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     Buzzword trending1;
     Buzzword trending2;
     Buzzword trending3;
+    Buzzword trending4;
+    Buzzword trending5;
     // Word of the day
     Buzzword wotd;
     // Current image used for Buzzy's expression
@@ -227,20 +229,40 @@ public class MainActivity extends AppCompatActivity {
         trending1 = aController.getATrendingBuzzword(0);
         trending2 = aController.getATrendingBuzzword(1);
         trending3 = aController.getATrendingBuzzword(2);
-        // Set titles on main activity with first 3 trending words
+        trending4 = aController.getATrendingBuzzword(3);
+        trending5 = aController.getATrendingBuzzword(4);
+        // Set titles on main activity with first 5 trending words
+        // Buzzword 1
         TextView title1 = findViewById(R.id.TrendingWord1Txt);
         title1.setText(capitalized(trending1.getBuzzword()));
+        // Buzzword 2
         TextView title2 = findViewById(R.id.TrendingWord2Txt);
         title2.setText(capitalized(trending2.getBuzzword()));
+        // Buzzword 3
         TextView title3 = findViewById(R.id.TrendingWord3Txt);
         title3.setText(capitalized(trending3.getBuzzword()));
-        // Set definitions on main activity with first 3 trending definitions
+        // Buzzword 4
+        TextView title4 = findViewById(R.id.TrendingWord4Txt);
+        title4.setText(capitalized(trending4.getBuzzword()));
+        // Buzzword 5
+        TextView title5 = findViewById(R.id.TrendingWord5Txt);
+        title5.setText(capitalized(trending5.getBuzzword()));
+        // Set definitions on main activity with first 5 trending definitions
+        // Buzzword 1
         TextView box1 = findViewById(R.id.TrendingWord1Def);
         box1.setText(checkMultipleDefinitions(trending1));
+        // Buzzword 2
         TextView box2 = findViewById(R.id.TrendingWord2Def);
         box2.setText(checkMultipleDefinitions(trending2));
+        // Buzzword 3
         TextView box3 = findViewById(R.id.TrendingWord3Def);
         box3.setText(checkMultipleDefinitions(trending3));
+        // Buzzword 4
+        TextView box4 = findViewById(R.id.TrendingWord4Def);
+        box4.setText(checkMultipleDefinitions(trending4));
+        // Buzzword 5
+        TextView box5 = findViewById(R.id.TrendingWord5Def);
+        box5.setText(checkMultipleDefinitions(trending5));
         // Set Word of the Day text boxes
         Buzzword wotd = aController.getWOTD();
         TextView wotdTitle = findViewById(R.id.wotdTxt);

@@ -20,10 +20,14 @@
     <string name="trending1Template">Trending Word 1</string>
     <string name="trending2Template">Trending Word 2</string>
     <string name="trending3Template">Trending Word 3</string>
+    <string name="trending4Template">Trending Word 4</string>
+    <string name="trending5Template">Trending Word 5</string>
     <string name="wotdTemplate">Buzzword</string>
     <string name="trending1TempDef">Definition 1</string>
     <string name="trending2TempDef">Definition 2</string>
     <string name="trending3TempDef">Definition 3</string>
+    <string name="trending4TempDef">Definition 4</string>
+    <string name="trending5TempDef">Definition 5</string>
     <string name="wotdTempDef">A word commonly found in contemporary sources.</string>
     <string name="searchedWordTemplate">Similar word to word</string>
     <string name="searchedDefinitionTemplate">Definition goes here.</string>
