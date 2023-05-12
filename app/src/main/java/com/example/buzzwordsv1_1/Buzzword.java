@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Buzzword {
     private String buzzword;
     private ArrayList<String> definitions;
+    private boolean isTrending;
 
     /**
      * Default constructor- Creates a new Buzzword object.
@@ -12,6 +13,7 @@ public class Buzzword {
     public Buzzword() {
         buzzword = "";
         definitions = new ArrayList<String>();
+        isTrending = false;
     }
 
     /**
@@ -65,5 +67,21 @@ public class Buzzword {
             }
         }
         return stringy;
+    }
+
+    /**
+     * Returns if the Buzzword is trending or not.
+     * @return a boolean based on if the Buzzword is trending
+     */
+    public boolean isTrending(){
+        return isTrending;
+    }
+
+    /**
+     * Sets the Buzzword to be trending or not.
+     * @param newValue a boolean if the Buzzword is trending
+     */
+    public void setTrending(boolean newValue){
+        isTrending = newValue;
     }
 }

@@ -1,6 +1,5 @@
 package com.example.buzzwordsv1_1;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,12 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -52,11 +45,11 @@ public class DefinitionActivity extends AppCompatActivity {
     /**
      * Pulls the definitions of the Buzzword from the Controller class and displays them in the respective box.
      */
-    public void handleDefinitions() {
+    private void handleDefinitions() {
         // Global controller class object
         final Controller aController = (Controller) getApplicationContext();
         int index = aController.findBuzzword(word);
-        theBuzzword = aController.getBuzzwords().get(index);
+        theBuzzword = aController.getAllBuzzwords().get(index);
         definitions = theBuzzword.getDefinitions();
 
         allDefinitions = "";

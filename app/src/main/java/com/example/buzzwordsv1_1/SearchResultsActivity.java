@@ -2,17 +2,26 @@ package com.example.buzzwordsv1_1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class SearchResultsActivity extends AppCompatActivity {
-    ArrayList<String> closestWords;
+    // ArrayList of Strings of closest words to the search word.
+    private ArrayList<String> closestWords;
+    // Buzzwords to be displayed
+    private Buzzword result1;
+    private Buzzword result2;
+    private Buzzword result3;
+    private Buzzword result4;
+    private Buzzword result5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +60,12 @@ public class SearchResultsActivity extends AppCompatActivity {
 
         // Run search method to find similar words to given String
 
-        closestWords = levenshteinSearch(query.toLowerCase(), aController.getBuzzwords());
+        closestWords = levenshteinSearch(query.toLowerCase(), aController.getAllBuzzwords());
 
-        Log.d("YAHOO", "Closest buzzwords to " + query + ": " + closestWords);
+        Log.d("YAHOO", "Closest trendingBuzzwords to " + query + ": " + closestWords);
+
+        // Send search results to respective text boxes in UI.
+        sendSearchResults();
     }
 
     /**
@@ -64,12 +76,44 @@ public class SearchResultsActivity extends AppCompatActivity {
         finish();
     }
     /**
-     * Creates a new intent and starts the definition activity.
+     * Creates a new intent, finds which button was pressed, gets the word associated with the button, and starts the definition activity.
      * @param v the view
      */
     public void goToDefinition(View v) {
-        Intent tents = new Intent(this, DefinitionActivity.class);
-        startActivity(tents);
+        String name = "";
+        TextView box = null;
+        int id = v.getId();
+        // Check which button is being pressed, then pass in buzzword.
+        switch (id) {
+            case R.id.SeeMoreResult1:
+                box = findViewById(R.id.SearchResult1Title);
+                break;
+            case R.id.SeeMoreResult2:
+                box = findViewById(R.id.SearchResult2Title);
+                break;
+            case R.id.SeeMoreResult3:
+                box = findViewById(R.id.SearchResult3Title);
+                break;
+            case R.id.SeeMoreResult4:
+                box = findViewById(R.id.SearchResult4Title);
+                break;
+            case R.id.SeeMoreResult5:
+                box = findViewById(R.id.SearchResult5Title);
+                break;
+            default:
+                // Display error message; can not find button that was pressed.
+                Context context = getApplicationContext();
+                String text = "Error: Can not determine button pressed.";
+                int duration = Toast.LENGTH_LONG;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                break;
+        }
+        name = box.getText().toString();
+        // Start definition activity, pass in Buzzword
+        Intent tent = new Intent(this, DefinitionActivity.class);
+        tent.putExtra("Buzzword",name);
+        startActivity(tent);
     }
 
     /**
@@ -88,10 +132,6 @@ public class SearchResultsActivity extends AppCompatActivity {
         ArrayList<Integer> intList = new ArrayList<Integer>();
         // List to store strings associated with those distances
         ArrayList<String> stringList = new ArrayList<String>();
-
-        Log.d("YAHOO", "stringList before addition:  " + stringList);
-        Log.d("YAHOO", "intList before addition:  " + intList);
-        Log.d("YAHOO", "regular list size before addition:  " + list.size());
 
         // Main loop, checks searched word to next word in the given list and sorts the ArrayLists by the distance given.
         for (int index = 0; index < list.size(); index++) {
@@ -130,9 +170,6 @@ public class SearchResultsActivity extends AppCompatActivity {
             int h = intList.size() -1;
             boolean done = false;
 
-            Log.d("YAHOO", "intList being added to:  " + intList);
-            Log.d("YAHOO", "stringList being added to:  " + stringList);
-
             // Checks if list is empty, needs to add initial value
             if (h != -1) {
                 while (!done) {
@@ -157,9 +194,49 @@ public class SearchResultsActivity extends AppCompatActivity {
                 stringList.add(word);
             }
         }
-        Log.d("YAHOO", "Final int list :" + intList);
-        Log.d("YAHOO", "Final String list :" + stringList);
         return stringList;
+    }
+
+    public void sendSearchResults(){
+        // Global controller class object
+        final Controller aController = (Controller) getApplicationContext();
+
+        // Get the top five closest Buzzwords to the query
+        result1 = aController.getABuzzword(aController.findBuzzword(closestWords.get(0)));
+        result2 = aController.getABuzzword(aController.findBuzzword(closestWords.get(1)));
+        result3 = aController.getABuzzword(aController.findBuzzword(closestWords.get(2)));
+        result4 = aController.getABuzzword(aController.findBuzzword(closestWords.get(3)));
+        result5 = aController.getABuzzword(aController.findBuzzword(closestWords.get(4)));
+
+        // Result #1
+        TextView title1 = findViewById(R.id.SearchResult1Title);
+        title1.setText(capitalized(result1.getBuzzword()));
+        TextView def1 = findViewById(R.id.SearchResult1Def);
+        def1.setText(checkMultipleDefinitions(result1));
+
+        // Result #2
+        TextView title2 = findViewById(R.id.SearchResult2Title);
+        title2.setText(capitalized(result2.getBuzzword()));
+        TextView def2 = findViewById(R.id.SearchResult2Def);
+        def2.setText(checkMultipleDefinitions(result2));
+
+        // Result #3
+        TextView title3 = findViewById(R.id.SearchResult3Title);
+        title3.setText(capitalized(result3.getBuzzword()));
+        TextView def3 = findViewById(R.id.SearchResult3Def);
+        def3.setText(checkMultipleDefinitions(result3));
+
+        // Result #4
+        TextView title4 = findViewById(R.id.SearchResult4Title);
+        title4.setText(capitalized(result4.getBuzzword()));
+        TextView def4 = findViewById(R.id.SearchResult4Def);
+        def4.setText(checkMultipleDefinitions(result4));
+
+        // Result #5
+        TextView title5 = findViewById(R.id.SearchResult5Title);
+        title5.setText(capitalized(result5.getBuzzword()));
+        TextView def5 = findViewById(R.id.SearchResult5Def);
+        def5.setText(checkMultipleDefinitions(result5));
     }
 
     /**
@@ -168,7 +245,22 @@ public class SearchResultsActivity extends AppCompatActivity {
      * @return the capitalized string
      */
     private String capitalized(String str){
-        String capital = str.substring(0,1).toUpperCase() + str.substring(1);
-        return capital;
+        return str.substring(0,1).toUpperCase() + str.substring(1);
+    }
+    /**
+     * Checks if a Buzzword object has more than one object. If it does, then it will display that there are multiple definitions to the Buzzword.
+     * @param buzz the Buzzword object to be checked
+     * @return the single definition of the Buzzword or the string "Multiple definitions available." if there is more than one definition for the Buzzword
+     */
+    private String checkMultipleDefinitions(Buzzword buzz){
+        String stringy = "";
+        if (buzz.getDefinitions().size() == 0) {
+            stringy = "No definitions available, please contact us!";
+        } else if (buzz.getDefinitions().size() < 2) {
+            stringy = buzz.getDefinitions().get(0) +".";
+        } else {
+            stringy = "Multiple definitions available.";
+        }
+        return stringy;
     }
 }

@@ -25,4 +25,11 @@
     <string name="trending2TempDef">Definition 2</string>
     <string name="trending3TempDef">Definition 3</string>
     <string name="wotdTempDef">A word commonly found in contemporary sources.</string>
+    <string name="searchedWordTemplate">Similar word to word</string>
+    <string name="searchedDefinitionTemplate">Definition goes here.</string>
+    <string name="word">Word</string>
+    <string name="aboutUsText">Buzzwords aims to extract the main keywords in the media. It scans a variety of financial, scientific, or political news sources for the most frequent terminology. Then, it complies these words into a regularly updated interface where users can quickly and easily view their definitions.</string>
+    <string name="ourNames">Buzzwords was created in early 2023 by Alex Chen, Shivani Parmar, and Thomas Park, each of Massachusetts Academy of Math and Science. This project was under the Apps For Good Project, under supervision from Mrs. Angela Taricco.</string>
+    <string name="buzzyCaption">This is Buzzy! They\'re the app\'s mascot. They are inspired from the word \"buzzsaw\", a circular saw. Thus, they have 8 spikes to show they\'re tough enough to handle the news!</string>
+    <string name="homeTxt">Home</string>
 </resources>

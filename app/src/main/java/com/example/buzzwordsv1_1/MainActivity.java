@@ -2,15 +2,17 @@ package com.example.buzzwordsv1_1;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,20 +28,32 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     // Determines if the Buzzword list has been updated (i.e. if it is a new day)
     boolean newDay = true;
-    // Currently trending buzzwords that are accessible from the main menu
+    // Currently trending trendingBuzzwords that are accessible from the main menu
     Buzzword trending1;
     Buzzword trending2;
     Buzzword trending3;
     // Word of the day
     Buzzword wotd;
+    // Current image used for Buzzy's expression
+    int choice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        readBuzzwordDataFB();
-        Log.d("YAHOO", "I'M FINNA READ THE FIREBASE!!!!!");
+        readAllBuzzwordDataFB();
+    }
+
+    /**
+     * This method will run when the activity is resumed. It resets Buzzy's rotation.
+     */
+    @Override
+    protected void onResume(){
+        super.onResume();
+        // Reset Buzzy's rotation
+        ImageView buzzyView = findViewById(R.id.buzzy);
+        buzzyView.setRotation(0);
     }
 
     /**
@@ -51,34 +65,33 @@ public class MainActivity extends AppCompatActivity {
         TextView box = null;
         int id = v.getId();
         // Check which button is being pressed, then pass in buzzword.
-        if (id == R.id.SeeMoreTrending1) {
-            box = findViewById(R.id.TrendingWord1Txt);
-        } else if (id == R.id.SeeMoreTrending2) {
-            box = findViewById(R.id.TrendingWord2Txt);
-        } else if (id == R.id.SeeMoreTrending3) {
-            box = findViewById(R.id.TrendingWord3Txt);
-        } else if (id == R.id.SeeMoreWotd) {
-            box = findViewById(R.id.wotdTxt);
-        } else {
-            // Display error message; can not find button that was pressed.
-            Context context = getApplicationContext();
-            String text = "Error: Can not determine button pressed.";
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
+        switch (id) {
+            case R.id.SeeMoreTrending1:
+                box = findViewById(R.id.TrendingWord1Txt);
+                break;
+            case R.id.SeeMoreTrending2:
+                box = findViewById(R.id.TrendingWord2Txt);
+                break;
+            case R.id.SeeMoreTrending3:
+                box = findViewById(R.id.TrendingWord3Txt);
+                break;
+            case R.id.SeeMoreWotd:
+                box = findViewById(R.id.wotdTxt);
+                break;
+            default:
+                // Display error message; can not find button that was pressed.
+                Context context = getApplicationContext();
+                String text = "Error: Can not determine button pressed.";
+                int duration = Toast.LENGTH_LONG;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                break;
+
         }
         name = box.getText().toString();
         // Start definition activity, pass in Buzzword
         Intent tent = new Intent(this, DefinitionActivity.class);
         tent.putExtra("Buzzword",name);
-        startActivity(tent);
-    }
-    /**
-     * Creates a new intent and starts the settings activity.
-     * @param v the view
-     */
-    public void goToSettings(View v) {
-        Intent tent = new Intent(this, SettingsActivity.class);
         startActivity(tent);
     }
     /**
@@ -115,12 +128,60 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Reads from Firebase Realtime Storage to obtain Buzzwords and populate Controller class.
+     * Reads from Firebase Realtime Storage to obtain Buzzwords and populate Controller class' ArrayList of Buzzwords.
      */
-    private void readBuzzwordDataFB(){
+    private void readAllBuzzwordDataFB() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("All");
+
+        // Read from the database
+        myRef.addValueEventListener(new ValueEventListener() {
+            // Global controller class object
+            final Controller aController = (Controller) getApplicationContext();
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again whenever data at this location is updated.
+                // Loop over all children in the "All" tab
+                for (DataSnapshot snap: dataSnapshot.getChildren()) {
+                    // Get buzzword Firebase word
+                    String str = snap.getKey();
+                    ArrayList<String> definitions = (ArrayList<String>) snap.child("/").getValue();
+                    // Make new buzzword object with word
+                    Buzzword word = new Buzzword(str.toLowerCase());
+                    // Add definitions to buzzword
+                    if (definitions != null) {
+                        for (int k = 0; k < definitions.size(); k++) {
+                            word.addDefinition(definitions.get(k));
+                        }
+                    }
+                    // Add buzzword object to global Controller object
+                    aController.addBuzzwords(word);
+                }
+                setTrendingWords();
+                // Choose Word of the Day, if it is a new day
+                if (newDay == true) {
+                    chooseWOTD(aController.getAllBuzzwords().size());
+                }
+                // Set the newDay boolean to false
+                newDay = false;
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Failed to read value
+                Log.w("Reading Error", "Failed to read value.", error.toException());
+            }
+        });
+    }
+
+    /**
+     * Gets the trending Buzzwords from the Firebase Database, sets the words already present in the ArrayList of Buzzwords to trending, then puts them in the ArrayList of Trending Buzzwords, all located in the Controller class.
+     */
+    private void setTrendingWords(){
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Trending");
+
+        ArrayList<String> trendingWords = new ArrayList<String>();
 
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
@@ -133,46 +194,39 @@ public class MainActivity extends AppCompatActivity {
                 for (int index = 0; index < dataSnapshot.getChildrenCount(); index++) {
                     // Get buzzword Firebase word
                     String str = dataSnapshot.child("/" + index + "/word").getValue().toString();
-                    Log.d("KeepItUpBaby", "Buzzword: " + str);
-                    // Get ArrayList from Firebase definitions
-                    ArrayList<String> definitions = (ArrayList<String>) dataSnapshot.child("/"+ index +"/definitions").getValue();
-                    // Make new buzzword object with word
-                    Buzzword word = new Buzzword(str);
-                    // Add definitions to buzzword
-                    if (definitions != null) {
-                        for (int k = 0; k < definitions.size(); k++) {
-                            word.addDefinition(definitions.get(k));
+                    trendingWords.add(str);
+                }
+                // Clear the trending words ArrayList in the Controller object
+                aController.clearTrending();
+                // For each string in the trending words, check if it is in the ArrayList of all Buzzwords already, and if so, set the boolean in the Buzzword object to true and put in the Controller class' trending Buzzword ArrayList.
+                for (int index1 = 0; index1 < trendingWords.size(); index1++) {
+                    for (int index2 = 0; index2 < aController.getAllBuzzwords().size(); index2++) {
+                        if (trendingWords.get(index1).toLowerCase().equals(aController.getAllBuzzwords().get(index2).getBuzzword().toLowerCase())){
+                            aController.getAllBuzzwords().get(index2).setTrending(true);
+                            aController.addToTrending(aController.getAllBuzzwords().get(index2));
                         }
                     }
-                    // Add buzzword object to global Controller object
-                    aController.addBuzzwords(word);
-                }
-                // Choose Word of the Day, if it is a new day
-                if (newDay == true) {
-                    chooseWOTD(aController.getBuzzwords().size());
                 }
                 // Display buzzwords to main activity screen
                 sendBuzzwords();
-                // Set the newDay boolean to false
-                newDay = false;
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // Failed to read value
-                Log.w("KeepItUpBaby", "Failed to read value.", error.toException());
+                Log.w("Reading Error", "Failed to read value.", error.toException());
             }
         });
     }
     /**
-     * Sends top 3 trending buzzwords to UI to be displayed
+     * Sends top 3 trending trendingBuzzwords to UI to be displayed.
      */
     public void sendBuzzwords(){
         // Global controller class object
         final Controller aController = (Controller) getApplicationContext();
         // Get first 3 trending buzzword objects from global Controller object
-        trending1 = aController.getBuzzword(0);
-        trending2 = aController.getBuzzword(1);
-        trending3 = aController.getBuzzword(2);
+        trending1 = aController.getATrendingBuzzword(0);
+        trending2 = aController.getATrendingBuzzword(1);
+        trending3 = aController.getATrendingBuzzword(2);
         // Set titles on main activity with first 3 trending words
         TextView title1 = findViewById(R.id.TrendingWord1Txt);
         title1.setText(capitalized(trending1.getBuzzword()));
@@ -221,17 +275,59 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Randomly chooses a word of the day from a given amount of Buzzwords. Ignores the top three trending Buzzwords to avoid redundancy.
+     * Randomly chooses a word of the day from a given amount of Buzzwords. The word of the day can not be one of the trending Buzzwords.
      * @param amount the amount of Buzzwords present in the global Controller object's ArrayList of Buzzwords
      */
     public void chooseWOTD(int amount) {
-        // Need to choose between these words in the ArrayList
-        int checkThrough = amount - 3;
-        Random randall = new Random();
-        int choice = randall.nextInt(checkThrough) + 3;
-        // Global controller class object
-        final Controller aController = (Controller) getApplicationContext();
-        wotd = aController.getBuzzword(choice);
-        aController.setWOTD(wotd);
+        boolean done = false;
+        while (!done) {
+            Random randall = new Random();
+            int choice = randall.nextInt(amount);
+            // Global controller class object
+            final Controller aController = (Controller) getApplicationContext();
+            wotd = aController.getABuzzword(choice);
+            if (!wotd.isTrending()) {
+                aController.setWOTD(wotd);
+                done = true;
+            }
+        }
+    }
+
+    /**
+     * Switches the face of Buzzy if clicked.
+     * @param v the view
+     */
+    public void switchFace(View v){
+        Log.d("Buzz","I was clicked");
+        ImageView buzzyView = findViewById(R.id.buzzy);
+        int original = choice;
+        int number = 0;
+        while (choice == original) {
+            Random randall = new Random();
+            choice = randall.nextInt(6);
+            switch (choice) {
+                case 0:
+                    number = R.drawable.buzzy;
+                    break;
+                case 1:
+                    number = R.drawable.buzzyconfused;
+                    break;
+                case 2:
+                    number = R.drawable.buzzyfrown;
+                    break;
+                case 3:
+                    number = R.drawable.buzzyopen;
+                    break;
+                case 4:
+                    number = R.drawable.buzzysmile;
+                    break;
+                case 5:
+                    number = R.drawable.buzzyunamused;
+                    break;
+            }
+        }
+        buzzyView.setImageResource(number);
+        Random rng = new Random();
+        buzzyView.setRotation(rng.nextInt(360));
     }
 }

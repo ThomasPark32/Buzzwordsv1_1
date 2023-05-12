@@ -25,7 +25,7 @@
             android:minHeight="?attr/actionBarSize"
             android:onClick="returnToMain"
             android:theme="?attr/actionBarTheme"
-            app:navigationIcon="@drawable/ic_launcher_foreground"
+            app:navigationIcon="@drawable/buzzyiconsmallest"
             app:title="@string/title"
             app:titleTextColor="#FFFFFF" />
 
@@ -36,13 +36,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#9A5171FE"
-        android:text="Word"
+        android:fontFamily="@font/lato_bold"
+        android:text="@string/word"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textIsSelectable="true"
-        android:textSize="48sp"
+        android:textSize="56sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TopCard" />
 
@@ -70,12 +72,16 @@
                     android:id="@+id/SearchResult1Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Similar word to word"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="50dp"
+                    android:fontFamily="@font/brawler"
+                    android:includeFontPadding="true"
+                    android:text="@string/searchedWordTemplate"
                     android:textColor="#000000"
-                    android:textSize="32sp"
+                    android:textSize="36sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.25"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,22 +89,27 @@
                     android:id="@+id/SearchResult1Def"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Definition goes here"
+                    android:fontFamily="@font/brawler"
+                    android:includeFontPadding="true"
+                    android:text="@string/searchedDefinitionTemplate"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/SearchResult1Title" />
 
                 <Button
                     android:id="@+id/SeeMoreResult1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
                     android:backgroundTint="@color/buzzblue"
+                    android:fontFamily="@font/lato_bold"
                     android:onClick="goToDefinition"
                     android:text="@string/MoreText"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.75"
                     app:layout_constraintStart_toStartOf="parent"
@@ -114,12 +125,16 @@
                     android:id="@+id/SearchResult2Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Similar word to word"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="50dp"
+                    android:fontFamily="@font/brawler"
+                    android:includeFontPadding="true"
+                    android:text="@string/searchedWordTemplate"
                     android:textColor="#000000"
-                    android:textSize="32sp"
+                    android:textSize="36sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.25"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -127,26 +142,190 @@
                     android:id="@+id/SearchResult2Def"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Definition goes here"
+                    android:fontFamily="@font/brawler"
+                    android:includeFontPadding="true"
+                    android:text="@string/searchedDefinitionTemplate"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/SearchResult2Title" />
 
                 <Button
                     android:id="@+id/SeeMoreResult2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
                     android:backgroundTint="@color/buzzblue"
+                    android:fontFamily="@font/lato_bold"
                     android:onClick="goToDefinition"
                     android:text="@string/MoreText"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.75"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/SearchResult2Def" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/SearchResult3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/SearchResult3Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="50dp"
+                    android:fontFamily="@font/brawler"
+                    android:includeFontPadding="true"
+                    android:text="@string/searchedWordTemplate"
+                    android:textColor="#000000"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/SearchResult3Def"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/brawler"
+                    android:includeFontPadding="true"
+                    android:text="@string/searchedDefinitionTemplate"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/SearchResult3Title" />
+
+                <Button
+                    android:id="@+id/SeeMoreResult3"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/buzzblue"
+                    android:fontFamily="@font/lato_bold"
+                    android:onClick="goToDefinition"
+                    android:text="@string/MoreText"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.75"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/SearchResult3Def" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/SearchResult4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/SearchResult4Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="50dp"
+                    android:fontFamily="@font/brawler"
+                    android:includeFontPadding="true"
+                    android:text="@string/searchedWordTemplate"
+                    android:textColor="#000000"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/SearchResult4Def"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/brawler"
+                    android:includeFontPadding="true"
+                    android:text="@string/searchedDefinitionTemplate"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/SearchResult4Title" />
+
+                <Button
+                    android:id="@+id/SeeMoreResult4"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/buzzblue"
+                    android:fontFamily="@font/lato_bold"
+                    android:onClick="goToDefinition"
+                    android:text="@string/MoreText"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.75"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/SearchResult4Def" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/SearchResult5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/SearchResult5Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="50dp"
+                    android:fontFamily="@font/brawler"
+                    android:includeFontPadding="true"
+                    android:text="@string/searchedWordTemplate"
+                    android:textColor="#000000"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/SearchResult5Def"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/brawler"
+                    android:includeFontPadding="true"
+                    android:text="@string/searchedDefinitionTemplate"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/SearchResult5Title" />
+
+                <Button
+                    android:id="@+id/SeeMoreResult5"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/buzzblue"
+                    android:fontFamily="@font/lato_bold"
+                    android:onClick="goToDefinition"
+                    android:text="@string/MoreText"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.75"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/SearchResult5Def" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

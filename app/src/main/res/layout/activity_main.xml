@@ -45,6 +45,20 @@
             android:orientation="vertical">
 
 
+            <TextView
+                android:id="@+id/homeTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="@string/homeTxt"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="60sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/TrendingWord1Box"
                 android:layout_width="match_parent"
@@ -55,9 +69,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="80dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="20dp"
                     android:clickable="false"
-                    android:fontFamily="sans-serif"
+                    android:fontFamily="@font/lato_bold"
                     android:text="@string/trendingStr"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
@@ -85,22 +99,24 @@
                     <TextView
                         android:id="@+id/TrendingWord1Txt"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
+                        android:fontFamily="@font/brawler"
                         android:text="@string/trending1Template"
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textIsSelectable="true"
-                        android:textSize="32sp"
+                        android:textSize="36sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/TrendingWord1Def"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/brawler"
                         android:text="@string/trending1TempDef"
                         android:textAlignment="textStart"
                         android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textSize="24sp" />
                 </LinearLayout>
 
                 <Button
@@ -108,9 +124,10 @@
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:backgroundTint="@color/buzzblue"
+                    android:fontFamily="@font/lato_bold"
                     android:onClick="goToDefinition"
                     android:text="@string/MoreText"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.75"
                     app:layout_constraintStart_toStartOf="parent"
@@ -137,22 +154,24 @@
                     <TextView
                         android:id="@+id/TrendingWord2Txt"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
+                        android:fontFamily="@font/brawler"
                         android:text="@string/trending2Template"
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textIsSelectable="true"
-                        android:textSize="32sp"
+                        android:textSize="36sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/TrendingWord2Def"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/brawler"
                         android:text="@string/trending2TempDef"
                         android:textAlignment="textStart"
                         android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textSize="24sp" />
                 </LinearLayout>
 
                 <Button
@@ -160,9 +179,10 @@
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:backgroundTint="@color/buzzblue"
+                    android:fontFamily="@font/lato_bold"
                     android:onClick="goToDefinition"
                     android:text="@string/MoreText"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.75"
@@ -191,21 +211,23 @@
                         android:id="@+id/TrendingWord3Txt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/brawler"
                         android:text="@string/trending3Template"
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textIsSelectable="true"
-                        android:textSize="32sp"
+                        android:textSize="36sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/TrendingWord3Def"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/brawler"
                         android:text="@string/trending3TempDef"
                         android:textAlignment="textStart"
                         android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textSize="24sp" />
 
                 </LinearLayout>
 
@@ -214,9 +236,10 @@
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:backgroundTint="@color/buzzblue"
+                    android:fontFamily="@font/lato_bold"
                     android:onClick="goToDefinition"
                     android:text="@string/MoreText"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.75"
@@ -237,11 +260,11 @@
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:clickable="false"
-                    android:fontFamily="sans-serif"
+                    android:fontFamily="@font/lato_bold"
                     android:text="@string/searchStr"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
-                    android:textSize="25sp"
+                    android:textSize="26sp"
                     android:textStyle="bold"
                     app:chipBackgroundColor="#BE5271FF"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -254,6 +277,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:ems="10"
+                    android:fontFamily="@font/lato"
                     android:hint="@string/searchTxt"
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -265,9 +289,10 @@
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:backgroundTint="@color/buzzblue"
+                    android:fontFamily="@font/lato_bold"
                     android:onClick="goToSearch"
                     android:text="@string/searchBoxStr"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.75"
                     app:layout_constraintStart_toStartOf="parent"
@@ -285,11 +310,12 @@
                     android:layout_height="80dp"
                     android:layout_marginStart="8dp"
                     android:clickable="false"
-                    android:fontFamily="sans-serif"
+                    android:fontFamily="@font/lato_bold"
+                    android:includeFontPadding="false"
                     android:text="@string/wotdTxt"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
-                    android:textSize="25sp"
+                    android:textSize="30sp"
                     android:textStyle="bold"
                     app:chipBackgroundColor="#BE5271FF"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -312,21 +338,23 @@
                         android:id="@+id/wotdTxt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/brawler"
                         android:text="@string/wotdTemplate"
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textIsSelectable="true"
-                        android:textSize="32sp"
+                        android:textSize="36sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/wotdDef"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/brawler"
                         android:text="@string/wotdTempDef"
                         android:textAlignment="textStart"
                         android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textSize="24sp" />
                 </LinearLayout>
 
                 <Button
@@ -334,9 +362,10 @@
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:backgroundTint="@color/buzzblue"
+                    android:fontFamily="@font/lato_bold"
                     android:onClick="goToDefinition"
                     android:text="@string/MoreText"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.75"
                     app:layout_constraintStart_toStartOf="parent"
@@ -351,15 +380,16 @@
                 android:background="@color/buzzblue">
 
                 <ImageView
-                    android:id="@+id/buzzy2"
+                    android:id="@+id/buzzy"
                     android:layout_width="130dp"
                     android:layout_height="130dp"
-                    android:layout_marginBottom="108dp"
+                    android:onClick="switchFace"
                     android:rotation="0"
                     app:layout_constraintBottom_toBottomOf="@+id/bottomTextLayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/bottomTextLayout"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/bottomTextLayout"
+                    app:layout_constraintVertical_bias="0.25"
                     app:srcCompat="@drawable/buzzy" />
 
                 <LinearLayout
@@ -367,47 +397,40 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintEnd_toStartOf="@+id/buzzy2"
+                    app:layout_constraintEnd_toStartOf="@+id/buzzy"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
-
-                    <Button
-                        android:id="@+id/settingsButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:backgroundTint="#BE5271FF"
-                        android:onClick="goToSettings"
-                        android:text="@string/settingsStr"
-                        android:textAlignment="viewStart"
-                        android:textSize="16sp" />
 
                     <Button
                         android:id="@+id/aboutButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#BE5271FF"
+                        android:fontFamily="@font/lato_bold"
                         android:onClick="goToAbout"
                         android:text="@string/aboutStr"
                         android:textAlignment="viewStart"
-                        android:textSize="16sp" />
+                        android:textSize="20sp" />
 
                     <Button
                         android:id="@+id/ContactButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#BE5271FF"
+                        android:fontFamily="@font/lato_bold"
                         android:onClick="goToContactUs"
                         android:text="@string/contactStr"
                         android:textAlignment="viewStart"
-                        android:textSize="16sp" />
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/copyright"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato"
                         android:text="@string/copyrightTxt"
                         android:textColor="@color/white"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                     <Space
                         android:layout_width="match_parent"
