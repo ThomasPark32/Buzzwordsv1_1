@@ -73,7 +73,7 @@
                 android:text="@string/trendingStr"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="56sp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/TrendingWord1Box"
@@ -84,9 +84,8 @@
                     android:id="@+id/TrendingLayout1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginEnd="8dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toTopOf="@+id/SeeMoreTrending1"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -102,7 +101,7 @@
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textIsSelectable="true"
-                        android:textSize="36sp"
+                        android:textSize="40sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -113,7 +112,7 @@
                         android:text="@string/trending1TempDef"
                         android:textAlignment="textStart"
                         android:textColor="#000000"
-                        android:textSize="24sp" />
+                        android:textSize="30sp" />
                 </LinearLayout>
 
                 <Button
@@ -143,8 +142,7 @@
                     android:id="@+id/TrendingLayout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -159,7 +157,7 @@
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textIsSelectable="true"
-                        android:textSize="36sp"
+                        android:textSize="40sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -170,7 +168,7 @@
                         android:text="@string/trending2TempDef"
                         android:textAlignment="textStart"
                         android:textColor="#000000"
-                        android:textSize="24sp" />
+                        android:textSize="30sp" />
                 </LinearLayout>
 
                 <Button
@@ -200,7 +198,7 @@
                     android:id="@+id/TrendingLayout3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="16dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toTopOf="@+id/SeeMoreTrending3"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -216,7 +214,7 @@
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textIsSelectable="true"
-                        android:textSize="36sp"
+                        android:textSize="40sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -227,7 +225,7 @@
                         android:text="@string/trending3TempDef"
                         android:textAlignment="textStart"
                         android:textColor="#000000"
-                        android:textSize="24sp" />
+                        android:textSize="30sp" />
 
                 </LinearLayout>
 
@@ -258,7 +256,7 @@
                     android:id="@+id/TrendingLayout4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="16dp"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -273,7 +271,7 @@
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textIsSelectable="true"
-                        android:textSize="36sp"
+                        android:textSize="40sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -284,7 +282,7 @@
                         android:text="@string/trending4TempDef"
                         android:textAlignment="textStart"
                         android:textColor="#000000"
-                        android:textSize="24sp" />
+                        android:textSize="30sp" />
 
                 </LinearLayout>
 
@@ -315,7 +313,11 @@
                     android:id="@+id/TrendingLayout5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_marginStart="16dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:id="@+id/TrendingWord5Txt"
@@ -326,7 +328,7 @@
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textIsSelectable="true"
-                        android:textSize="36sp"
+                        android:textSize="40sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -337,7 +339,7 @@
                         android:text="@string/trending5TempDef"
                         android:textAlignment="textStart"
                         android:textColor="#000000"
-                        android:textSize="24sp" />
+                        android:textSize="30sp" />
                 </LinearLayout>
 
                 <Button
@@ -370,7 +372,7 @@
                 android:text="@string/searchStr"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="50sp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/searchBox"
@@ -419,7 +421,7 @@
                 android:text="@string/wotdTxt"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="50sp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/wotdBox"
@@ -447,7 +449,7 @@
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textIsSelectable="true"
-                        android:textSize="36sp"
+                        android:textSize="40sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -458,7 +460,7 @@
                         android:text="@string/wotdTempDef"
                         android:textAlignment="textStart"
                         android:textColor="#000000"
-                        android:textSize="24sp" />
+                        android:textSize="30sp" />
                 </LinearLayout>
 
                 <Button

@@ -77,6 +77,12 @@ public class MainActivity extends AppCompatActivity {
             case R.id.SeeMoreTrending3:
                 box = findViewById(R.id.TrendingWord3Txt);
                 break;
+            case R.id.SeeMoreTrending4:
+                box = findViewById(R.id.TrendingWord4Txt);
+                break;
+            case R.id.SeeMoreTrending5:
+                box = findViewById(R.id.TrendingWord5Txt);
+                break;
             case R.id.SeeMoreWotd:
                 box = findViewById(R.id.wotdTxt);
                 break;
