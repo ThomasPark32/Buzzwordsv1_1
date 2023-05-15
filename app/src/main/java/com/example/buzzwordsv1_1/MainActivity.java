@@ -305,11 +305,11 @@ public class MainActivity extends AppCompatActivity {
     private String checkMultipleDefinitions(Buzzword buzz){
         String stringy = "";
         if (buzz.getDefinitions().size() == 0) {
-            stringy = "No definitions available, please contact us!";
+            stringy = "\u2022   " + "No definitions available, please contact us!";
         } else if (buzz.getDefinitions().size() < 2) {
-            stringy = buzz.getDefinitions().get(0) +".";
+            stringy = "\u2022   " + buzz.getDefinitions().get(0) +".";
         } else {
-            stringy = "Multiple definitions available.";
+            stringy = "\u2022   " + "Multiple definitions available.";
         }
         return stringy;
     }
