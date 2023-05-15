@@ -1,5 +1,6 @@
 package com.example.buzzwordsv1_1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,12 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class DefinitionActivity extends AppCompatActivity {
@@ -16,6 +23,8 @@ public class DefinitionActivity extends AppCompatActivity {
     public String word;
     public ArrayList<String> definitions;
     public String allDefinitions;
+    public ArrayList<String> headlines;
+    public String allHeadlines;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +34,7 @@ public class DefinitionActivity extends AppCompatActivity {
         Intent tent = getIntent();
         word = tent.getStringExtra("Buzzword");
         Log.d("KeepItUpBaby", "Word is " + word + ".");
+
     }
     @Override
     protected void onStart() {
@@ -33,6 +43,8 @@ public class DefinitionActivity extends AppCompatActivity {
         TextView title = findViewById(R.id.TheBuzzword);
         title.setText(word);
         handleDefinitions();
+        handleHeadlines();
+
     }
     /**
      * Quits the current activity and goes back to the previous screen.
@@ -61,5 +73,19 @@ public class DefinitionActivity extends AppCompatActivity {
         }
         TextView definitionBox = findViewById(R.id.BuzzwordDef);
         definitionBox.setText(allDefinitions);
+    }
+
+    private void handleHeadlines(){
+        if (theBuzzword.isTrending()) {
+            headlines = theBuzzword.getHeadlines();
+            allHeadlines = "";
+            for (String str : headlines) {
+                allHeadlines += "\u2022 " + str + "\n" + "\n";
+            }
+        } else {
+            allHeadlines = "No headlines available!";
+        }
+        TextView headlineBox = findViewById(R.id.BuzzwordHead);
+        headlineBox.setText(allHeadlines);
     }
 }

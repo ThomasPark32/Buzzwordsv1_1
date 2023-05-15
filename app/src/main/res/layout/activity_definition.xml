@@ -11,7 +11,6 @@
         android:id="@+id/TopCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="returnToMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -34,7 +33,10 @@
     <ScrollView
         android:id="@+id/ScrollableView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/TallBox"
@@ -65,11 +67,26 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/definitionsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:includeFontPadding="false"
+                    android:text="@string/definitionsTitle"
+                    android:textColor="#000000"
+                    android:textSize="35sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TheBuzzword" />
+
+                <TextView
                     android:id="@+id/BuzzwordDef"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="50dp"
                     android:clickable="false"
                     android:fontFamily="@font/brawler"
                     android:text="an Internet slang term used to express enthusiasm, mostly among online gamers"
@@ -77,8 +94,43 @@
                     android:textIsSelectable="true"
                     android:textSize="25sp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/TheBuzzword" />
+                    app:layout_constraintTop_toBottomOf="@+id/definitionsTitle" />
+
+                <TextView
+                    android:id="@+id/headlinesTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:includeFontPadding="false"
+                    android:text="@string/headlinesTitle"
+                    android:textColor="#000000"
+                    android:textSize="35sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/BuzzwordDef" />
+
+                <TextView
+                    android:id="@+id/BuzzwordHead"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginBottom="25dp"
+                    android:clickable="false"
+                    android:fontFamily="@font/brawler"
+                    android:text="@string/headlineTemplate"
+                    android:textColor="#000000"
+                    android:textIsSelectable="true"
+                    android:textSize="25sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/headlinesTitle" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

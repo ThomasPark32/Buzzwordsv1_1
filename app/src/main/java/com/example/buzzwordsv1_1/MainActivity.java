@@ -215,6 +215,18 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
+                // Get the trending Buzzword's trending headlines and add it to the trending buzzwords
+                for (Buzzword word : aController.getTrendingBuzzwords()) {
+                    for (int index = 0; index < dataSnapshot.getChildrenCount(); index++) {
+                        if (word.getBuzzword().equals(dataSnapshot.child("/"+index+"/word").getValue().toString())) {
+                            for (int index2 = 0; index2 < dataSnapshot.child("/"+index+"/headlines").getChildrenCount(); index2++) {
+                                String headline = dataSnapshot.child("/"+index+"/headlines/"+index2+"/source").getValue().toString() + ": " + dataSnapshot.child("/"+index+"/headlines/"+index2+"/title").getValue().toString();
+                                Log.d("Carmen","Headline: " + headline);
+                                word.addHeadlines(headline);
+                            }
+                        }
+                    }
+                }
                 // Display buzzwords to main activity screen
                 sendBuzzwords();
             }

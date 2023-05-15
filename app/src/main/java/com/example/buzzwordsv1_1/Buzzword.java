@@ -6,6 +6,7 @@ public class Buzzword {
     private String buzzword;
     private ArrayList<String> definitions;
     private boolean isTrending;
+    private ArrayList<String> headlines;
 
     /**
      * Default constructor- Creates a new Buzzword object.
@@ -14,6 +15,7 @@ public class Buzzword {
         buzzword = "";
         definitions = new ArrayList<String>();
         isTrending = false;
+        headlines = new ArrayList<String>();
     }
 
     /**
@@ -23,6 +25,7 @@ public class Buzzword {
     public Buzzword(String word) {
         buzzword = word;
         definitions = new ArrayList<String>();
+        headlines = new ArrayList<String>();
     }
 
     /**
@@ -83,5 +86,14 @@ public class Buzzword {
      */
     public void setTrending(boolean newValue){
         isTrending = newValue;
+    }
+    public void addHeadlines (String headline) {
+        headlines.add(headline);
+    }
+    public void removeHeadlines (String headline) {
+        headlines.remove(headline);
+    }
+    public ArrayList<String> getHeadlines() {
+        return headlines;
     }
 }
