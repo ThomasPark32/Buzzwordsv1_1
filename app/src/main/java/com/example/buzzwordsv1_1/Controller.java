@@ -1,7 +1,6 @@
 package com.example.buzzwordsv1_1;
 
 import android.app.Application;
-import android.util.Log;
 
 import java.util.ArrayList;
 

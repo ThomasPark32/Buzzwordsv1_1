@@ -46,29 +46,13 @@
 
 
             <TextView
-                android:id="@+id/homeTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:fontFamily="@font/lato_bold"
-                android:paddingTop="10dp"
-                android:paddingBottom="20dp"
-                android:text="@string/homeTxt"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="60sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
                 android:id="@+id/TrendingTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/buzzblue"
                 android:fontFamily="@font/lato_bold"
                 android:includeFontPadding="false"
-                android:paddingTop="10dp"
+                android:paddingTop="70dp"
                 android:paddingBottom="10dp"
                 android:text="@string/trendingStr"
                 android:textAlignment="center"

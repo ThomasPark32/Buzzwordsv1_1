@@ -38,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
     Buzzword wotd;
     // Current image used for Buzzy's expression
     int choice;
+    /**
+     * This method will run when the activity is first created. This way, the app can read from the Firebase only once.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +48,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         readAllBuzzwordDataFB();
-    }
 
+        // Global controller class object
+        final Controller aController = (Controller) getApplicationContext();
+
+        // Make a Buzzword object with Buzzword's definition
+        Buzzword special = new Buzzword("buzzword");
+        special.addDefinition("A word commonly found in contemporary sources.");
+        aController.addBuzzwords(special);
+    }
     /**
      * This method will run when the activity is resumed. It resets Buzzy's rotation.
      */
@@ -57,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         ImageView buzzyView = findViewById(R.id.buzzy);
         buzzyView.setRotation(0);
     }
-
     /**
      * Creates a new intent, finds which button was pressed, gets the word associated with the button, and starts the definition activity.
      * @param v the view
@@ -166,12 +175,6 @@ public class MainActivity extends AppCompatActivity {
                     aController.addBuzzwords(word);
                 }
                 setTrendingWords();
-                // Choose Word of the Day, if it is a new day
-                if (newDay == true) {
-                    chooseWOTD(aController.getAllBuzzwords().size());
-                }
-                // Set the newDay boolean to false
-                newDay = false;
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -180,7 +183,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     /**
      * Gets the trending Buzzwords from the Firebase Database, sets the words already present in the ArrayList of Buzzwords to trending, then puts them in the ArrayList of Trending Buzzwords, all located in the Controller class.
      */
@@ -221,12 +223,17 @@ public class MainActivity extends AppCompatActivity {
                         if (word.getBuzzword().equals(dataSnapshot.child("/"+index+"/word").getValue().toString())) {
                             for (int index2 = 0; index2 < dataSnapshot.child("/"+index+"/headlines").getChildrenCount(); index2++) {
                                 String headline = dataSnapshot.child("/"+index+"/headlines/"+index2+"/source").getValue().toString() + ": " + dataSnapshot.child("/"+index+"/headlines/"+index2+"/title").getValue().toString();
-                                Log.d("Carmen","Headline: " + headline);
                                 word.addHeadlines(headline);
                             }
                         }
                     }
                 }
+                // Choose Word of the Day, if it is a new day
+                if (newDay == true) {
+                    chooseWOTD(aController.getAllBuzzwords().size());
+                }
+                // Set the newDay boolean to false
+                newDay = false;
                 // Display buzzwords to main activity screen
                 sendBuzzwords();
             }
@@ -338,7 +345,6 @@ public class MainActivity extends AppCompatActivity {
      * @param v the view
      */
     public void switchFace(View v){
-        Log.d("Buzz","I was clicked");
         ImageView buzzyView = findViewById(R.id.buzzy);
         int original = choice;
         int number = 0;

@@ -87,12 +87,26 @@ public class Buzzword {
     public void setTrending(boolean newValue){
         isTrending = newValue;
     }
+
+    /**
+     * Adds a headline to the Buzzword's headline list.
+     * @param headline the headline to add
+     */
     public void addHeadlines (String headline) {
         headlines.add(headline);
     }
+
+    /**
+     * Removes a headline from the Buzzword's headline list.
+     * @param headline the headline to remove
+     */
     public void removeHeadlines (String headline) {
         headlines.remove(headline);
     }
+    /**
+     * Returns the ArrayList of Strings which represent headlines stored in this Buzzword object.
+     * @return an ArrayList of Strings representing headlines
+     */
     public ArrayList<String> getHeadlines() {
         return headlines;
     }

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
@@ -25,6 +24,10 @@ public class DefinitionActivity extends AppCompatActivity {
     public String allDefinitions;
     public ArrayList<String> headlines;
     public String allHeadlines;
+
+    /**
+     * This method runs only once, getting the Buzzword given from the sending activity.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +36,11 @@ public class DefinitionActivity extends AppCompatActivity {
 
         Intent tent = getIntent();
         word = tent.getStringExtra("Buzzword");
-        Log.d("KeepItUpBaby", "Word is " + word + ".");
-
     }
+
+    /**
+     * This method runs after creation, handling definitions and headlines and displaying them.
+     */
     @Override
     protected void onStart() {
         super.onStart();
@@ -75,6 +80,9 @@ public class DefinitionActivity extends AppCompatActivity {
         definitionBox.setText(allDefinitions);
     }
 
+    /**
+     * Pulls the headlines of the Buzzword from the Controller class and displays them in the respective box.
+     */
     private void handleHeadlines(){
         if (theBuzzword.isTrending()) {
             headlines = theBuzzword.getHeadlines();

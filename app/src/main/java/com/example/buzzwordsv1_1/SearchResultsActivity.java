@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
@@ -22,6 +21,9 @@ public class SearchResultsActivity extends AppCompatActivity {
     private Buzzword result3;
     private Buzzword result4;
     private Buzzword result5;
+    /**
+     * Runs this method once at the creation of this activity, setting the titles of the activity to the given search query.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,9 +63,6 @@ public class SearchResultsActivity extends AppCompatActivity {
         // Run search method to find similar words to given String
 
         closestWords = levenshteinSearch(query.toLowerCase(), aController.getAllBuzzwords());
-
-        Log.d("YAHOO", "Closest trendingBuzzwords to " + query + ": " + closestWords);
-
         // Send search results to respective text boxes in UI.
         sendSearchResults();
     }
@@ -197,6 +196,9 @@ public class SearchResultsActivity extends AppCompatActivity {
         return stringList;
     }
 
+    /**
+     * Displays the top 5 search results to their respective text boxes.
+     */
     public void sendSearchResults(){
         // Global controller class object
         final Controller aController = (Controller) getApplicationContext();

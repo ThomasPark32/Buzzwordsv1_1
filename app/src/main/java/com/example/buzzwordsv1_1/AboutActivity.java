@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.Window;
 
 public class AboutActivity extends AppCompatActivity {
-
+    /**
+     * Runs this method once at the creation of this activity.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
