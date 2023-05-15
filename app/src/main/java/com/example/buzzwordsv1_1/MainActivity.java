@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Make a Buzzword object with Buzzword's definition
         Buzzword special = new Buzzword("buzzword");
-        special.addDefinition("A word commonly found in contemporary sources.");
+        special.addDefinition("A word commonly found in contemporary sources");
         aController.addBuzzwords(special);
     }
     /**
