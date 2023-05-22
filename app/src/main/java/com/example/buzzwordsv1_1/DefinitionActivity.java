@@ -1,29 +1,29 @@
 package com.example.buzzwordsv1_1;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class DefinitionActivity extends AppCompatActivity {
-    public Buzzword theBuzzword;
-    public String word;
-    public ArrayList<String> definitions;
-    public String allDefinitions;
-    public ArrayList<String> headlines;
-    public String allHeadlines;
+    private Buzzword theBuzzword;
+    private String word;
+    private ArrayList<String> definitions;
+    private String allDefinitions;
+    private ArrayList<String> headlines;
+    private ArrayList<String> urls;
+    private ArrayList<String> formattedHeadlines;
+
 
     /**
      * This method runs only once, getting the Buzzword given from the sending activity.
@@ -84,16 +84,61 @@ public class DefinitionActivity extends AppCompatActivity {
      * Pulls the headlines of the Buzzword from the Controller class and displays them in the respective box.
      */
     private void handleHeadlines(){
+        formattedHeadlines = new ArrayList<String>();
         if (theBuzzword.isTrending()) {
             headlines = theBuzzword.getHeadlines();
-            allHeadlines = "";
-            for (String str : headlines) {
-                allHeadlines += "\u2022 " + str + "\n" + "\n";
+            urls = theBuzzword.getURLs();
+            for (int index = 0; index < headlines.size(); index++) {
+                formattedHeadlines.add("<a href='" + urls.get(index) + "'>" + headlines.get(index) + "</a>");
             }
         } else {
-            allHeadlines = "No headlines available!";
+            formattedHeadlines.add("No headlines available!");
+            for (int k = 0; k < 4; k++) {
+                formattedHeadlines.add("");
+            }
         }
-        TextView headlineBox = findViewById(R.id.BuzzwordHead);
-        headlineBox.setText(allHeadlines);
+        // Send headlines to UI
+        for (int number = 0; number < formattedHeadlines.size(); number++) {
+            switch (number) {
+                case 0:
+                    TextView headlineBox1 = findViewById(R.id.BuzzwordHead1);
+                    headlineBox1.setClickable(true);
+                    headlineBox1.setMovementMethod(LinkMovementMethod.getInstance());
+                    headlineBox1.setText(Html.fromHtml(formattedHeadlines.get(number),Html.FROM_HTML_MODE_COMPACT));
+                    break;
+                case 1:
+                    TextView headlineBox2 = findViewById(R.id.BuzzwordHead2);
+                    headlineBox2.setClickable(true);
+                    headlineBox2.setMovementMethod(LinkMovementMethod.getInstance());
+                    headlineBox2.setText(Html.fromHtml(formattedHeadlines.get(number),Html.FROM_HTML_MODE_COMPACT));
+                    break;
+                case 2:
+                    TextView headlineBox3 = findViewById(R.id.BuzzwordHead3);
+                    headlineBox3.setClickable(true);
+                    headlineBox3.setMovementMethod(LinkMovementMethod.getInstance());
+                    headlineBox3.setText(Html.fromHtml(formattedHeadlines.get(number),Html.FROM_HTML_MODE_COMPACT));
+                    break;
+                case 3:
+                    TextView headlineBox4 = findViewById(R.id.BuzzwordHead4);
+                    headlineBox4.setClickable(true);
+                    headlineBox4.setMovementMethod(LinkMovementMethod.getInstance());
+                    headlineBox4.setText(Html.fromHtml(formattedHeadlines.get(number),Html.FROM_HTML_MODE_COMPACT));
+                    break;
+                case 4:
+                    TextView headlineBox5 = findViewById(R.id.BuzzwordHead5);
+                    headlineBox5.setClickable(true);
+                    headlineBox5.setMovementMethod(LinkMovementMethod.getInstance());
+                    headlineBox5.setText(Html.fromHtml(formattedHeadlines.get(number),Html.FROM_HTML_MODE_COMPACT));
+                    break;
+                default:
+                    // Display error message; can not find headline box.
+                    Context context = getApplicationContext();
+                    String text = "Error: Error in sending headlines.";
+                    int duration = Toast.LENGTH_LONG;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                    break;
+            }
+        }
     }
 }

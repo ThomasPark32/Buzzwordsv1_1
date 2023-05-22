@@ -98,7 +98,12 @@ public class Controller extends Application {
         }
         return location;
     }
-
+    /**
+     * Clears the Buzzword ArrayList with all Buzzwords.
+     */
+    public void clearAllBuzzwords() {
+        allBuzzwords.clear();
+    }
     /**
      * Clears the trending Buzzword ArrayList.
      */

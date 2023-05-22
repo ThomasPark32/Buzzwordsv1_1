@@ -158,6 +158,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again whenever data at this location is updated.
+                // Clear Buzzword list.
+                aController.clearAllBuzzwords();
                 // Loop over all children in the "All" tab
                 for (DataSnapshot snap: dataSnapshot.getChildren()) {
                     // Get buzzword Firebase word
@@ -211,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
                 // For each string in the trending words, check if it is in the ArrayList of all Buzzwords already, and if so, set the boolean in the Buzzword object to true and put in the Controller class' trending Buzzword ArrayList.
                 for (int index1 = 0; index1 < trendingWords.size(); index1++) {
                     for (int index2 = 0; index2 < aController.getAllBuzzwords().size(); index2++) {
-                        if (trendingWords.get(index1).toLowerCase().equals(aController.getAllBuzzwords().get(index2).getBuzzword().toLowerCase())){
+                        if (trendingWords.get(index1).toLowerCase().equals(aController.getAllBuzzwords().get(index2).getBuzzword().toLowerCase())) {
                             aController.getAllBuzzwords().get(index2).setTrending(true);
                             aController.addToTrending(aController.getAllBuzzwords().get(index2));
                         }
@@ -224,6 +226,8 @@ public class MainActivity extends AppCompatActivity {
                             for (int index2 = 0; index2 < dataSnapshot.child("/"+index+"/headlines").getChildrenCount(); index2++) {
                                 String headline = dataSnapshot.child("/"+index+"/headlines/"+index2+"/source").getValue().toString() + ": " + dataSnapshot.child("/"+index+"/headlines/"+index2+"/title").getValue().toString();
                                 word.addHeadlines(headline);
+                                String url = dataSnapshot.child("/"+index+"/headlines/"+index2+"/url").getValue().toString();
+                                word.addURLs(url);
                             }
                         }
                     }

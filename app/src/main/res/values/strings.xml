@@ -38,5 +38,5 @@
     <string name="homeTxt">Home</string>
     <string name="headlinesTitle"><u>Headlines</u></string>
     <string name="definitionsTitle"><u>Definitions</u></string>
-    <string name="headlineTemplate">Headlines go here.</string>
+    <string name="allHeadlinesStr">Headlines with URLs go here.</string>
 </resources>
